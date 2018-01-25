@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.security.auth.callback.Callback;
 
+import nyc.c4q.unit5midassessment.controller.UserAdapter;
 import nyc.c4q.unit5midassessment.model.Results;
 import nyc.c4q.unit5midassessment.model.User;
 import retrofit2.Call;
@@ -21,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserAPIClient implements retrofit2.Callback<Results> {
 
-    final static String BASE_URL = "https://randomuser.me/api/?nat=us&inc=name,location,cell,email,dob,picture&results=20";
+    final static String BASE_URL = "https://randomuser.me";
     Results result;
     List<User> userList = new ArrayList<>();
     RecyclerView recyclerView;
@@ -50,6 +51,8 @@ public class UserAPIClient implements retrofit2.Callback<Results> {
     public void onResponse(Call<Results> call, Response<Results> response) {
         result = response.body();
         userList = result.getResults();
+        UserAdapter adapter = new UserAdapter(userList);
+        recyclerView.setAdapter(adapter);
         Log.d("CALLCHECK","SUCCESS");
 
 

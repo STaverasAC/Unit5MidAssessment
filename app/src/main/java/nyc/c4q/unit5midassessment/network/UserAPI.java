@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 
 public interface UserAPI {
 
-    @GET()
+    @GET("/api/?nat=us&inc=name,location,cell,email,dob,picture&results=20")
     Call<Results> getResults();
 
 
