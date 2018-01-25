@@ -85,6 +85,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                     goToDetail.putExtra("street",user.getLocation().getStreet());
                     goToDetail.putExtra("state",user.getLocation().getState());
                     goToDetail.putExtra("postcode",user.getLocation().getPostcode());
+                    goToDetail.putExtra("image",user.getPicture().getLarge());
                     itemView.getContext().startActivity(goToDetail);
                 }
             });
